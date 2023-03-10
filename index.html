@@ -12,17 +12,21 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-        .section-div{
+        .container{
             display: flex;
             justify-content: center;
-        }
-
-        section {
-            display: flex;
-            margin-top: 5rem;
+            margin-top: 4rem;
             margin-left: 1.5rem;
+            margin-right: 1.5rem;
+            height: auto;
         }
+        
+
+    @media (max-width: 480px) {
+        .container {
+            width:auto;
+        }
+    }
 
         .output {
             display: flex;
@@ -41,18 +45,17 @@
 </head>
 
 <body>
+    <div class="container">
     <div class="section-div">
-        <section>
-
-        </section>
+            <div class="output"></div>
     </div>
+</div>
 
     <script>
         const body = document.querySelector('body')
         const section = document.querySelector('section')
-        const output = document.createElement('div')
-        output.className = 'output'
-        section.append(output)
+        const output = document.querySelector('.output')
+        const sectionDiv = document.querySelector('.section-div')
 
         const text = [
             {
@@ -90,7 +93,6 @@
                 let p = document.createElement('p')
                 p.className = 'paragraph'
                 p.innerHTML = item['para']
-                console.log(item.para)
 
                 const chameleon = () => {
                     let random1 = Math.floor(Math.random() * 255)
@@ -112,7 +114,7 @@
             let random2 = Math.floor(Math.random() * 255)
             let random3 = Math.floor(Math.random() * 255)
             let color = `rgb(${random1},${random2},${random3})`
-            body.style.backgroundColor = color
+            sectionDiv.style.backgroundColor = color
         }
         setInterval(chameleon_2, 1000)
     </script>
